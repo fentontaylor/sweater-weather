@@ -1,10 +1,13 @@
 class GeocodeService
+  include ApiFetchable
+
   def initialize(city)
     @city = city
   end
 
   def lat_long
-    data = parse_json(fetch_location)
+    response = api_fetch(geocode_path)
+    data = parse_json(response)
     location = extract_lat_long(data)
     location.values.join(',')
   end
@@ -14,14 +17,6 @@ class GeocodeService
   def geocode_path
     "https://maps.googleapis.com/maps/api/geocode/json" \
       "?address=#{@city}&key=#{ENV['google_api_key']}"
-  end
-
-  def fetch_location
-    Faraday.get(geocode_path)
-  end
-
-  def parse_json(response)
-    JSON.parse(response.body, symbolize_names: true)
   end
 
   def extract_lat_long(data)
