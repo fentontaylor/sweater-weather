@@ -1,5 +1,6 @@
 class Api::V1::ForecastController < ApplicationController
   def index
-    render json: {data: {}}
+    presenter = ForecastPresenter.new(params[:location])
+    render json: ForecastSerializer.new(presenter).json
   end
 end
