@@ -30,6 +30,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'webmock'
   gem 'pry'
   gem 'rspec-rails'
   gem 'simplecov', require: false
