@@ -1,25 +1,16 @@
 class GeocodeService
   include ApiFetchable
 
-  def initialize(city)
-    @city = city
+  def initialize(location)
+    @location = location
   end
 
-  def lat_long
-    response = api_fetch(geocode_path)
-    data = parse_json(response)
-    location = extract_lat_long(data)
-    location.values.join(',')
+  def get_location_data
+    retrieve_data(request_path)
   end
 
-  private
-
-  def geocode_path
+  def request_path
     "https://maps.googleapis.com/maps/api/geocode/json" \
-      "?address=#{@city}&key=#{ENV['google_api_key']}"
-  end
-
-  def extract_lat_long(data)
-    data[:results].first[:geometry][:location]
+      "?address=#{@location}&key=#{ENV['google_api_key']}"
   end
 end
