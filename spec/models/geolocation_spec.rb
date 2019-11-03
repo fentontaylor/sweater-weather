@@ -61,8 +61,8 @@ describe Geolocation, type: :model do
       expect(@geolocation.city).to eq('Denver')
       expect(@geolocation.state).to eq('CO')
       expect(@geolocation.country).to eq('United States')
-      expect(@geolocation.latitude).to eq('39.7392358')
-      expect(@geolocation.longitude).to eq('-104.990251')
+      expect(@geolocation.latitude).to eq(39.7392358)
+      expect(@geolocation.longitude).to eq(-104.990251)
       expect(@geolocation.lat_long_string).to eq('39.7392358,-104.990251')
     end
   end
