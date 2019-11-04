@@ -1,8 +1,9 @@
 class Geolocation
-  attr_reader :address_components, :lat_long
+  attr_reader :address_components, :lat_long, :formatted_address
 
   def initialize(hash)
     @address_components = hash[:results].first[:address_components]
+    @formatted_address = hash[:results].first[:formatted_address]
     @lat_long = hash[:results].first[:geometry][:location]
   end
 

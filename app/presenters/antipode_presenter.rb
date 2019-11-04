@@ -6,7 +6,7 @@ class AntipodePresenter
   end
 
   def antipode_city
-    antipode_location.city
+    binding.pry
   end
 
   def weather_summary
@@ -19,24 +19,28 @@ class AntipodePresenter
 
   private
 
-  def geocode_service
-    @geocode_service ||= GeocodeService.new(@location)
+  def geo_service(location)
+    GeocodeService.new(location)
   end
 
   def search_location
-    @search_location ||= Geolocation.new(geocode_service.get_location)
+    @search_location ||= Geolocation.new(geo_service(@location).get_location)
   end
 
   def antipode_service
-    @antip_service = AntipodeService.new(geolocation.lat_long)
+    @antip_service = AntipodeService.new(search_location.lat_long)
+  end
+
+  def antipode
+    @antipode ||= Antipode.new(antipode_service.get_antipode)
   end
 
   def antipode_location
-    @antipode_location ||= Antipode.new(antipode_service.get_antipode)
+    @antipode_location ||= Geolocation.new(geo_service(antipode.lat_long_string).get_location)
   end
 
   def forecast_service
-    @forecast_service ||= ForecastService.new(geolocation.lat_long_string)
+    @forecast_service ||= ForecastService.new(antipode.lat_long_string)
   end
 
   def forecast
