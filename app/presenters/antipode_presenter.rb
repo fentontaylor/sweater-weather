@@ -1,6 +1,20 @@
 class AntipodePresenter
+  attr_reader :location
+
   def initialize(location)
     @location = location
+  end
+
+  def antipode_city
+
+  end
+
+  def weather_summary
+
+  end
+
+  def temp_current
+
   end
 
   private
@@ -14,7 +28,7 @@ class AntipodePresenter
   end
 
   def antipode_service
-    @antip_service = AntipodeService.new(geolocation.lat_long)    
+    @antip_service = AntipodeService.new(geolocation.lat_long)
   end
 
   # def forecast_service
