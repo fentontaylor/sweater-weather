@@ -5,7 +5,7 @@ describe Geolocation, type: :model do
     stub_denver_location
 
     service = GeocodeService.new('denver,co')
-    data = service.get_location_data
+    data = service.get_location
     @geolocation = Geolocation.new(data)
   end
 

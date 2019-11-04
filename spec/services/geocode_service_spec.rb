@@ -4,7 +4,7 @@ describe 'GeocodeService' do
   it 'takes a city and returns parsed json from Google Geolocation API' do
     stub_denver_location
     service = GeocodeService.new('denver,co')
-    data = service.get_location_data
+    data = service.get_location
 
     expect(data).to have_key(:results)
 

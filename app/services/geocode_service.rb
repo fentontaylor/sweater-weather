@@ -5,7 +5,7 @@ class GeocodeService
     @location = location
   end
 
-  def get_location_data
+  def get_location
     retrieve_data(request_path)
   end
 

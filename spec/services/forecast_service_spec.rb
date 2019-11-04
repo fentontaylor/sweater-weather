@@ -5,7 +5,7 @@ describe ForecastService do
     stub_denver_location
     stub_denver_forecast
 
-    data = GeocodeService.new('denver,co').get_location_data
+    data = GeocodeService.new('denver,co').get_location
     geolocation = Geolocation.new(data)
     service = ForecastService.new(geolocation.lat_long_string)
 
