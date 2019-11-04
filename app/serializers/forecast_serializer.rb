@@ -31,7 +31,7 @@ class ForecastSerializer
     {
       time: @presenter.time,
       date: @presenter.date,
-      summary: @presenter.summary,
+      summary: @presenter.summary_current,
       icon: @presenter.icon,
       temperature: @presenter.current_temp,
       feels_like: @presenter.feels_like,
