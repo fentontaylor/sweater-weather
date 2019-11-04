@@ -19,8 +19,8 @@ describe '/api/v1/antipode?location={city} endpoint' do
         attributes: {
           location_name: "RP69, Jujuy, Argentina",
           forecast: {
-            summary: 'Clear',
-            current_temperature: 75.64,
+            summary: 'Mostly Cloudy',
+            current_temperature: 70.29,
           }
         }
       }
