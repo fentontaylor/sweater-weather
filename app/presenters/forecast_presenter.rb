@@ -47,8 +47,8 @@ class ForecastPresenter
     forecast_decorator.icon
   end
 
-  def current_temp
-    forecast_decorator.current_temp
+  def temp_current
+    forecast_decorator.temp_current
   end
 
   def feels_like

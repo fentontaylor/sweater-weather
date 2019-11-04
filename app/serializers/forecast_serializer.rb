@@ -33,7 +33,7 @@ class ForecastSerializer
       date: @presenter.date,
       summary: @presenter.summary_current,
       icon: @presenter.icon,
-      temperature: @presenter.current_temp,
+      temperature: @presenter.temp_current,
       feels_like: @presenter.feels_like,
       humidity: @presenter.humidity,
       visibility: @presenter.visibility,
