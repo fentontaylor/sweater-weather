@@ -21,18 +21,38 @@ class ForecastDecorator < SimpleDelegator
     next_8_hours = hourly[:data].first(8)
     next_8_hours.map do |hour|
       {
-        time: short_time(hour[:time]),
+        time: time_abbr(hour[:time], :hour),
         icon: hour[:icon],
         temperature: hour[:temperature]
       }
     end
   end
 
+  def daily_forecast
+    next_5_days = daily[:data].first(5)
+    next_5_days.map do |day|
+      {
+        day: time_abbr(day[:time], :day),
+        icon: day[:icon],
+        precip_probability: convert_pct(day[:precipProbability]),
+        temp_high: day[:temperatureHigh],
+        temp_low: day[:temperatureLow]
+      }
+    end
+  end
+
   private
 
-  def short_time(time)
+  def convert_pct(pct)
+    (pct * 100).to_i.to_s + '%'
+  end
+
+  def time_abbr(time, format)
     t = Time.at time
-    t.strftime("%l %p").strip
+    case format
+    when :hour then t.strftime("%l %p").strip
+    when :day then t.strftime("%A")
+    end
   end
 
   def time_obj

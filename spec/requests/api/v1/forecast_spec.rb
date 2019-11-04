@@ -37,5 +37,13 @@ describe '/api/v1/forecast endpoint' do
     expect(hourly.first[:time]).to eq('4 PM')
     expect(hourly.first[:icon]).to eq("partly-cloudy-day")
     expect(hourly.first[:temperature]).to eq(45.41)
+
+    daily = forecast[:daily][:data]
+    expect(daily.count).to eq(5)
+    expect(daily.first[:day]).to eq('Saturday')
+    expect(daily.first[:icon]).to eq('clear-day')
+    expect(daily.first[:precip_probability]).to eq('8%')
+    expect(daily.first[:temp_high]).to eq(51.75)
+    expect(daily.first[:temp_low]).to eq(27.56)
   end
 end

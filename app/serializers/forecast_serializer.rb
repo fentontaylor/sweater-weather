@@ -10,7 +10,8 @@ class ForecastSerializer
         forecast: {
           current: forecast_current_data,
           summary: forecast_summary_data,
-          hourly: { data: @presenter.hourly_forecast}
+          hourly: { data: @presenter.hourly_forecast},
+          daily: { data: @presenter.daily_forecast }
         }
       }
     }

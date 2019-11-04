@@ -79,6 +79,10 @@ class ForecastPresenter
     forecast_decorator.hourly_forecast
   end
 
+  def daily_forecast
+    forecast_decorator.daily_forecast
+  end
+
   private
 
   def geocode_service
