@@ -75,6 +75,10 @@ class ForecastPresenter
     forecast_decorator.temp_low
   end
 
+  def hourly_forecast
+    forecast_decorator.hourly_forecast
+  end
+
   private
 
   def geocode_service

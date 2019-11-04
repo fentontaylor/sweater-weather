@@ -9,7 +9,8 @@ class ForecastSerializer
         location: location_data,
         forecast: {
           current: forecast_current_data,
-          summary: forecast_summary_data
+          summary: forecast_summary_data,
+          hourly: { data: @presenter.hourly_forecast}
         }
       }
     }
