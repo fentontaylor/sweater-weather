@@ -17,7 +17,23 @@ class ForecastDecorator < SimpleDelegator
     time_obj.strftime("%m/%d")
   end
 
+  def hourly_forecast
+    next_8_hours = hourly[:data].first(8)
+    next_8_hours.map do |hour|
+      {
+        time: short_time(hour[:time]),
+        icon: hour[:icon],
+        temperature: hour[:temperature]
+      }
+    end
+  end
+
   private
+
+  def short_time(time)
+    t = Time.at time
+    t.strftime("%l %p").strip
+  end
 
   def time_obj
     @time_obj ||= Time.at current_time
