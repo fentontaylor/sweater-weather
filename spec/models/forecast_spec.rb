@@ -26,5 +26,7 @@ describe Forecast do
     expect(@forecast.summary_current).to eq('Partly Cloudy')
     expect(@forecast.summary_today).to eq('Partly cloudy throughout the day.')
     expect(@forecast.current_time).to eq(1572733611)
+    expect(@forecast.hourly).to be_a Hash
+    expect(@forecast.daily).to be_a Hash
   end
 end

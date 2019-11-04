@@ -9,7 +9,9 @@ class Forecast
               :icon,
               :summary_current,
               :summary_today,
-              :current_time
+              :current_time,
+              :hourly,
+              :daily
 
   def initialize(hash)
     @temp_current = hash[:currently][:temperature]
@@ -23,5 +25,7 @@ class Forecast
     @summary_current = hash[:currently][:summary]
     @summary_today = hash[:hourly][:summary]
     @current_time = hash[:currently][:time]
+    @hourly = hash[:hourly]
+    @daily = hash[:daily]
   end
 end
