@@ -8,7 +8,7 @@ def stub_denver_location
 end
 
 def stub_denver_forecast
-  service = ForecastService.new('denver,co')
+  service = ForecastService.new('39.7392358,-104.990251')
   json = File.open('./spec/fixtures/forecast_denver.json')
   stub_request(:get, service.request_path)
     .to_return(status: 200, body: json)

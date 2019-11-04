@@ -1,11 +1,13 @@
 require 'mock_helper'
 
-describe 'ForecastService' do
-  it 'takes a city and returns DarkSky forecast' do
+describe ForecastService do
+  it "takes a city's lat/lng and returns DarkSky forecast" do
     stub_denver_location
     stub_denver_forecast
 
-    service = ForecastService.new('denver,co')
+    data = GeocodeService.new('denver,co').get_location_data
+    geolocation = Geolocation.new(data)
+    service = ForecastService.new(geolocation.lat_long_string)
 
     data = service.get_forecast
 
