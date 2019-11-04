@@ -6,7 +6,7 @@ class AntipodePresenter
   end
 
   def antipode_city
-    binding.pry
+    antipode_location.formatted_address
   end
 
   def weather_summary
