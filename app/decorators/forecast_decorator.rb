@@ -35,6 +35,7 @@ class ForecastDecorator < SimpleDelegator
         day: time_abbr(day[:time], :day),
         icon: day[:icon],
         precip_probability: convert_pct(day[:precipProbability]),
+        precip_type: day[:precipType],
         temp_high: day[:temperatureHigh],
         temp_low: day[:temperatureLow]
       }

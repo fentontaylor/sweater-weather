@@ -43,6 +43,7 @@ describe '/api/v1/forecast endpoint' do
     expect(daily.first[:day]).to eq('Saturday')
     expect(daily.first[:icon]).to eq('clear-day')
     expect(daily.first[:precip_probability]).to eq('8%')
+    expect(daily.first[:precip_type]).to eq('snow')
     expect(daily.first[:temp_high]).to eq(51.75)
     expect(daily.first[:temp_low]).to eq(27.56)
   end
