@@ -4,7 +4,7 @@ describe '/api/v1/antipode?location={city} endpoint' do
   it 'returns the weather at an antipode city' do
     WebMock.allow_net_connect!
 
-    get '/api/v1/antipode?location=hongkong'
+    get '/api/v1/antipode?location=Hong Kong'
 
     expect(response).to be_successful
 
