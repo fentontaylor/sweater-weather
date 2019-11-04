@@ -24,4 +24,10 @@ describe Antipode do
     expect(@antipode.latitude).to eq(-22.3193039)
     expect(@antipode.longitude).to eq(-65.8306389)
   end
+
+  describe 'instance methods' do
+    it '#lat_long_string' do
+      expect(@antipode.lat_long_string).to eq("-22.3193039,-65.8306389")
+    end
+  end
 end
