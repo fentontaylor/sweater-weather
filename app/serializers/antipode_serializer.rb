@@ -9,15 +9,19 @@ class AntipodeSerializer
         id: 1,
         type: 'antipode',
         search_location: @presenter.location,
-        attributes: {
-          location_name: @presenter.antipode_city,
-          forecast: forecast_data
-        }
+        attributes: attribute_data
       }
     }
   end
 
   private
+
+  def attribute_data
+    {
+      location_name: @presenter.antipode_city,
+      forecast: forecast_data
+    }
+  end
 
   def forecast_data
     {
