@@ -3,10 +3,10 @@ require 'mock_helper'
 describe BackgroundImgService do
   it 'take a location and returns data from Unsplash API' do
     stub_denver_images
-    
+
     service = BackgroundImgService.new('denver,co')
 
-    data = service.get_background_img
+    data = service.get_background_imgs
 
     expect(data).to have_key(:results)
     expect(data[:results]).to be_an Array

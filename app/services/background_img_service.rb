@@ -5,7 +5,7 @@ class BackgroundImgService
     @location = location
   end
 
-  def get_background_img
+  def get_background_imgs
     parse_json(fetch_data)
   end
 
