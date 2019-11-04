@@ -1,4 +1,6 @@
 require 'simplecov'
+require 'webmock/rspec'
+
 SimpleCov.start 'rails' do
   add_filter '/lib/'
   add_filter '/bin/'

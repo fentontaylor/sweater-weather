@@ -1,8 +1,18 @@
-require 'rails_helper'
+require 'mock_helper'
 
 describe 'GeocodeService' do
-  it 'takes a city and returns the latitude/longitude' do
-    service = GeocodeService.new('Denver')
-    expect(service.lat_long).to eq('39.7392358,-104.990251')
+  it 'takes a city and returns parsed json from Google Geolocation API' do
+    stub_denver_location
+    service = GeocodeService.new('denver,co')
+    data = service.get_location
+
+    expect(data).to have_key(:results)
+
+    results = data[:results].first
+
+    expect(results).to have_key(:address_components)
+    expect(results).to have_key(:formatted_address)
+    expect(results).to have_key(:geometry)
+    expect(results).to have_key(:place_id)
   end
 end
