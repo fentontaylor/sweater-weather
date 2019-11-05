@@ -10,17 +10,18 @@ describe '/api/v1/forecast endpoint', type: :request do
 
     data = JSON.parse(response.body, symbolize_names: true)
     binding.pry
-    expect(data[:data][:location][:city]).to eq('Denver')
-    expect(data[:data][:location][:state]).to eq('CO')
-    expect(data[:data][:location][:country]).to eq('United States')
-    expect(data[:data][:location][:latitude]).to eq(39.7392358)
-    expect(data[:data][:location][:longitude]).to eq(-104.990251)
+    location = data[:data][:attributes][:location]
+    expect(location[:city]).to eq('Denver')
+    expect(location[:state]).to eq('CO')
+    expect(location[:country]).to eq('United States')
+    expect(location[:latitude]).to eq(39.7392358)
+    expect(location[:longitude]).to eq(-104.990251)
 
     summary = data[:data][:attributes][:summary]
-    expect(forecast[:summary][:today]).to eq('Partly cloudy throughout the day.')
-    expect(forecast[:summary][:tonight]).to eq('Clear')
-    expect(forecast[:summary][:temp_high]).to eq(51.75)
-    expect(forecast[:summary][:temp_low]).to eq(27.56)
+    expect(summary[:today]).to eq('Partly cloudy throughout the day.')
+    expect(summary[:tonight]).to eq('Clear')
+    expect(summary[:temp_high]).to eq(51.75)
+    expect(summary[:temp_low]).to eq(27.56)
 
     current = data[:data][:attributes][:current]
     expect(current[:time]).to eq('4:26 PM')
