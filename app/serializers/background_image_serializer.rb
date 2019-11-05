@@ -1,5 +1,7 @@
 class BackgroundImageSerializer
-  def initialize(presenter)
-    @data = presenter.data
+  include FastJsonapi::ObjectSerializer
+
+  attribute :img_url do |obj|
+    obj.random_url
   end
 end

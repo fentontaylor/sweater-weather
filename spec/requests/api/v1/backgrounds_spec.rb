@@ -8,10 +8,10 @@ describe '/api/v1/backgrounds endpoint', type: :request do
     expect(response).to be_successful
 
     result = JSON.parse(response.body, symbolize_names: true)
-
+    binding.pry
     expect(result).to have_key(:data)
-    expect(result[:data][:id]).to eq(1)
-    expect(result[:data][:type]).to eq('background image')
+    expect(result[:data][:id]).to eq(nil)
+    expect(result[:data][:type]).to eq('background_image')
     expect(result[:data][:attributes][:img_url]).to be_a String
   end
 end

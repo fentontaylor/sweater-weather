@@ -1,16 +1,14 @@
 class BackgroundImageFacade
+  attr_reader :id, :type
+
   def initialize(location)
     @location = location
+    @id = nil
+    @type = 'background_image'
   end
 
-  def data
-    {
-      id: 1,
-      type: 'background image',
-      attributes: {
-        img_url: image.random_url
-      }
-    }
+  def random_url
+    image.random_url
   end
 
   private
