@@ -1,6 +1,6 @@
 require 'mock_helper'
 
-describe '/api/v1/backgrounds endpoint' do
+describe '/api/v1/backgrounds endpoint', type: :request do
   it 'returns a background image for a given city' do
     stub_denver_images
 

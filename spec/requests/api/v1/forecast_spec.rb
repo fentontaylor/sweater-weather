@@ -1,6 +1,6 @@
 require 'mock_helper'
 
-describe '/api/v1/forecast endpoint' do
+describe '/api/v1/forecast endpoint', type: :request do
   it 'returns forecast data for a specific city' do
     stub_denver_location
     stub_denver_forecast
