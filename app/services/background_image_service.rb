@@ -1,4 +1,4 @@
-class BackgroundImgService
+class BackgroundImageService
   include ApiFetchable
 
   def initialize(location)
