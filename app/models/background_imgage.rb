@@ -1,4 +1,4 @@
-class BackgroundImg
+class BackgroundImage
   attr_reader :results
 
   def initialize(hash)

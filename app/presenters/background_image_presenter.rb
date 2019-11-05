@@ -16,10 +16,10 @@ class BackgroundImagePresenter
   private
 
   def img_service
-    @img_service ||= BackgroundImgService.new(@location)
+    @img_service ||= BackgroundImageService.new(@location)
   end
 
   def image
-    @image ||= BackgroundImg.new(img_service.get_background_imgs)
+    @image ||= BackgroundImage.new(img_service.get_background_imgs)
   end
 end

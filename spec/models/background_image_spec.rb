@@ -1,15 +1,15 @@
 require 'mock_helper'
 
-describe BackgroundImg do
+describe BackgroundImage do
   before :each do
     stub_denver_images
-    service = BackgroundImgService.new('denver,co')
+    service = BackgroundImageService.new('denver,co')
     data = service.get_background_imgs
-    @bg_img = BackgroundImg.new(data)
+    @bg_img = BackgroundImage.new(data)
   end
 
   it 'can initialize with a hash' do
-    expect(@bg_img).to be_an_instance_of(BackgroundImg)
+    expect(@bg_img).to be_an_instance_of(BackgroundImage)
   end
 
   it 'attributes' do

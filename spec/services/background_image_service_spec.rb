@@ -1,10 +1,10 @@
 require 'mock_helper'
 
-describe BackgroundImgService do
+describe BackgroundImageService do
   it 'take a location and returns data from Unsplash API' do
     stub_denver_images
 
-    service = BackgroundImgService.new('denver,co')
+    service = BackgroundImageService.new('denver,co')
 
     data = service.get_background_imgs
 
