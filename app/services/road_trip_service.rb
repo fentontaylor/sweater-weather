@@ -1,9 +1,9 @@
 class RoadTripService
   include ApiFetchable
 
-  def initialize(args)
-    @origin = args[:origin]
-    @destination = args[:destination]
+  def initialize(origin, destination)
+    @origin = origin
+    @destination = destination
   end
 
   def get_directions
