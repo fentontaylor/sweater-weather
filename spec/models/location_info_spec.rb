@@ -1,15 +1,7 @@
-require 'mock_helper'
+require 'rails_helper'
 
 describe LocationInfo do
-  before :each do
-    stub_denver_location
-
-    service = GeocodeService.new('denver,co')
-    data = service.get_location
-    @geolocation = Geolocation.new(data)
-  end
-
-  it 'can initialize with a geolocation object' do
+  it 'can initialize with keywords' do
     location_info =
       LocationInfo.new(
         city: 'city',
