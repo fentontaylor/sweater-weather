@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'User sends post request with credentials', type: :request do
+describe 'POST request with credentials sent to /api/v1/users', type: :request do
   before :each do
     @credentials = '{
       "email": "bob@ross.com",
