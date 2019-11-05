@@ -19,6 +19,8 @@ describe 'POST request with credentials sent to /api/v1/sessions', type: :reques
     it 'creates a session and returns their api key'  do
       post '/api/v1/sessions', params: @credentials, headers: @headers
 
+      body = JSON.parse(response.body, symbolize_names: true)
+      
       expect(response.status).to eq(200)
       expect(body[:api_key]).to be_a String
       expect(body[:api_key].length).to eq(48)
