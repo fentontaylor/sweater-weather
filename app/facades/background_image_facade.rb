@@ -1,4 +1,4 @@
-class BackgroundImagePresenter
+class BackgroundImageFacade
   def initialize(location)
     @location = location
   end
