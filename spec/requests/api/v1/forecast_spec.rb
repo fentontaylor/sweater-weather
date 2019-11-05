@@ -9,7 +9,7 @@ describe '/api/v1/forecast endpoint', type: :request do
     expect(response).to be_successful
 
     data = JSON.parse(response.body, symbolize_names: true)
-
+    binding.pry
     expect(data[:data][:location][:city]).to eq('Denver')
     expect(data[:data][:location][:state]).to eq('CO')
     expect(data[:data][:location][:country]).to eq('United States')

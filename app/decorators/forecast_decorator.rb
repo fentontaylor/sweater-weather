@@ -17,6 +17,15 @@ class ForecastDecorator < SimpleDelegator
     time_obj.strftime("%m/%d")
   end
 
+  def summary
+    {
+      today: summary_today,
+      tonight: summary_tonight,
+      temp_high: temp_high,
+      temp_low: temp_low
+    }
+  end
+
   def hourly_forecast
     next_8_hours = hourly[:data].first(8)
     next_8_hours.map do |hour|

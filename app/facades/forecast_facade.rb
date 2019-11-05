@@ -1,6 +1,10 @@
-class ForecastPresenter
+class ForecastFacade
+  attr_reader :id, :type
+
   def initialize(location)
     @location = location
+    @id = nil
+    @type = 'forecast'
   end
 
   def city
@@ -73,6 +77,10 @@ class ForecastPresenter
 
   def temp_low
     forecast_decorator.temp_low
+  end
+
+  def summary
+    forecast_decorator.summary
   end
 
   def hourly_forecast
