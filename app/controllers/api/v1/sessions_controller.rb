@@ -4,7 +4,7 @@ class Api::V1::SessionsController < ApplicationController
     user = User.find_by(email: session_params[:email])
     if user&.authenticate(session_params[:password])
       session[:user_id] = user.id
-      render_success
+      render_success(user)
     else
       render_unauthorized
     end
@@ -12,7 +12,7 @@ class Api::V1::SessionsController < ApplicationController
 
   private
 
-  def render_success
+  def render_success(user)
     render json: { api_key: user.api_key }, status: 200
   end
 
