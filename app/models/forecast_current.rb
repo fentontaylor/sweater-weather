@@ -2,9 +2,9 @@ class ForecastCurrent
   def initialize(args)
     @time = args[:time]
     @date = args[:date]
-    @summary = args[:summary_current]
+    @summary = args[:summary]
     @icon = args[:icon]
-    @temperature = args[:temp_current]
+    @temperature = args[:temperature]
     @feels_like = args[:feels_like]
     @humidity = args[:humidity]
     @visibility = args[:visibility]
