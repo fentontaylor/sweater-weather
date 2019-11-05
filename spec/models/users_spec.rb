@@ -13,7 +13,7 @@ describe User, type: :model do
       password: 'happy',
       password_confirmation: 'happy'
     )
-    binding.pry
+
     expect(user.email).to eq('bob@ross.com')
     expect(user.api_key).to be_a String
     expect(user.api_key.length).to eq(48)
