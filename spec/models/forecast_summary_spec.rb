@@ -8,6 +8,7 @@ describe ForecastSummary do
     forecast = Forecast.new(service.get_forecast)
     decorator = ForecastDecorator.new(forecast)
     summary = ForecastSummary.new(decorator)
+
     expect(summary).to be_an_instance_of(ForecastSummary)
   end
 end

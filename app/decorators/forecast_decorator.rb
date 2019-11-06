@@ -43,8 +43,6 @@ class ForecastDecorator < SimpleDelegator
     midnight_forecast[:summary]
   end
 
-  private
-
   def time
     time_obj.strftime("%l:%M %p").strip
   end
@@ -52,6 +50,8 @@ class ForecastDecorator < SimpleDelegator
   def date
     time_obj.strftime("%m/%d")
   end
+
+  private
 
   def convert_pct(pct)
     (pct * 100).to_i.to_s + '%'
