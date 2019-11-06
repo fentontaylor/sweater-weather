@@ -8,4 +8,6 @@ Rails.application.routes.draw do
       post '/road_trip', to: 'road_trips#create'
     end
   end
+
+  match "*path", to: "errors#index", via: :all
 end
