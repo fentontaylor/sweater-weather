@@ -8,6 +8,6 @@ describe 'A request is sent to non-existant endpoint/typo' do
 
     expect(response.status).to eq(400)
     expect(data['status']).to eq(400)
-    expect(data['errors']).to eq('Path to endpoint does not exist or has syntax error')
+    expect(data['errors']).to eq('Endpoint does not exist or has syntax error')
   end
 end
