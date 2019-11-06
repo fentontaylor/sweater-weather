@@ -17,4 +17,10 @@ describe RoadTrip, type: :model do
     expect(@road_trip.approx_travel_time).to eq('1 hour 48 mins')
     expect(@road_trip.travel_seconds).to eq(6450)
   end
+
+  describe 'instance_methods' do
+    it '#lat_long_string' do
+      expect(@road_trip.lat_long_string).to eq('38.2542053,-104.6087488')
+    end
+  end
 end
