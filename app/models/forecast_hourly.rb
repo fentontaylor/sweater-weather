@@ -1,7 +1,7 @@
 class ForecastHourly
-  def initialize(args)
-    @time = args[:time]
-    @icon = args[:icon]
-    @temperature = args[:temperature]
+  def initialize(obj, hour)
+    @time = obj.time_abbr(hour[:time], :hour)
+    @icon = hour[:icon]
+    @temperature = hour[:temperature]
   end
 end

@@ -14,11 +14,7 @@ class ForecastDecorator < SimpleDelegator
   def hourly_forecast
     next_8_hours = hourly[:data].first(8)
     next_8_hours.map do |hour|
-      ForecastHourly.new(
-        time: time_abbr(hour[:time], :hour),
-        icon: hour[:icon],
-        temperature: hour[:temperature]
-      )
+      ForecastHourly.new(self, hour)
     end
   end
 
@@ -36,7 +32,6 @@ class ForecastDecorator < SimpleDelegator
     end
   end
 
-
   def summary_tonight
     time = get_midnight_timestamp
     midnight_forecast = hourly[:data].find { |t| t[:time] == time }
@@ -50,8 +45,6 @@ class ForecastDecorator < SimpleDelegator
   def date
     time_obj.strftime("%m/%d")
   end
-
-  private
 
   def convert_pct(pct)
     (pct * 100).to_i.to_s + '%'
