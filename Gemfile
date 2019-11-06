@@ -31,10 +31,12 @@ group :development, :test do
 end
 
 group :test do
-  gem 'webmock'
+  gem 'mocha'
   gem 'rspec-rails'
-  gem 'simplecov', require: false
   gem 'shoulda-matchers'
+  gem 'simplecov', require: false
+  gem 'timecop'
+  gem 'webmock'
 end
 
 group :development do

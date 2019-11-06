@@ -30,10 +30,32 @@ describe ForecastDecorator do
   end
 
   describe 'decorator methods' do
-    it '#summary_tonight' do
-      expect(@decorator.summary_tonight).to eq('Clear')
-      expect(@decorator.time).to eq('4:26 PM')
-      expect(@decorator.date).to eq('11/02')
+    it '#summary' do
+      expect(@decorator.summary).to be_a ForecastSummary
+    end
+
+    it '#current_forecast' do
+      expect(@decorator.current_forecast).to be_a ForecastCurrent
+    end
+
+    it '#hourly_forecast' do
+      hourly = @decorator.hourly_forecast
+      expect(hourly).to be_an Array
+      expect(hourly.count).to eq(8)
+
+      all_forecast_hourly = hourly.all? { |obj| obj.class == ForecastHourly }
+
+      expect(all_forecast_hourly). to be true
+    end
+
+    it '#hourly_forecast' do
+      daily = @decorator.daily_forecast
+      expect(daily).to be_an Array
+      expect(daily.count).to eq(5)
+
+      all_forecast_daily = daily.all? { |obj| obj.class == ForecastDaily }
+
+      expect(all_forecast_daily). to be true
     end
   end
 end

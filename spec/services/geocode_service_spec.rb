@@ -5,7 +5,7 @@ describe 'GeocodeService' do
     stub_denver_location
     service = GeocodeService.new('denver,co')
     data = service.get_location
-
+    
     expect(data).to have_key(:results)
 
     results = data[:results].first

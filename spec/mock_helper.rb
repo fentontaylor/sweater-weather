@@ -26,3 +26,17 @@ def stub_denver_images
       }
     ).to_return(status: 200, body: json)
 end
+
+def stub_denver_to_pueblo_directions
+  service = RoadTripService.new('Denver,CO', 'Pueblo,CO')
+  json = File.open('./spec/fixtures/directions_denver_to_pueblo.json')
+  stub_request(:get, service.request_path)
+    .to_return(status: 200, body: json)
+end
+
+def stub_pueblo_future_forecast
+  service = ForecastService.new('39.7392358,-104.990251', 1573009319)
+  json = File.open('./spec/fixtures/forecast_future_pueblo.json')
+  stub_request(:get, service.request_path)
+    .to_return(status: 200, body: json)
+end

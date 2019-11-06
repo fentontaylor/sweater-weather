@@ -1,6 +1,6 @@
 class Api::V1::BackgroundsController < ApplicationController
   def index
-    presenter = BackgroundImagePresenter.new(params[:location])
-    render json: BackgroundImageSerializer.new(presenter)
+    facade = BackgroundImageFacade.new(params[:location])
+    render json: BackgroundImageSerializer.new(facade)
   end
 end
