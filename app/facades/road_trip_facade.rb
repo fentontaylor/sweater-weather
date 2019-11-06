@@ -1,5 +1,5 @@
 class RoadTripFacade
-  attr_reader :id, :type
+  attr_reader :id, :type, :origin, :destination
 
   def initialize(args)
     @origin = args[:origin]
@@ -27,6 +27,6 @@ class RoadTripFacade
   end
 
   def road_trip
-    @road_trip ||= road_trip_service.get_directions
+    @road_trip ||= RoadTrip.new(road_trip_service.get_directions)
   end
 end

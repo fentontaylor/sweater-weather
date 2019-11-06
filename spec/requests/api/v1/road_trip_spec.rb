@@ -1,6 +1,7 @@
 require 'mock_helper'
 
 describe 'POST /api/v1/road_trip', type: :request do
+  WebMock.allow_net_connect!
   before :each do
     @user = User.create(email: 'bob@ross.com', password: 'tree', password_confirmation: 'tree' )
 
@@ -24,8 +25,8 @@ describe 'POST /api/v1/road_trip', type: :request do
     data = JSON.parse(response.body, symbolize_names: true)
     binding.pry
     expect(data).to have_key(:data)
-    expect(data[:id]).to be_nil
-    expect(data[:type]).to eq('road_trip')
+    expect(data[:data][:id]).to be_nil
+    expect(data[:data][:type]).to eq('road_trip')
 
     attributes = data[:data][:attributes]
     expect(attributes[:temperature]).to eq(40)
