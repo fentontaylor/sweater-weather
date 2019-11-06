@@ -4,26 +4,11 @@ class ForecastDecorator < SimpleDelegator
   end
 
   def summary
-    ForecastSummary.new(
-      today: summary_today,
-      tonight: summary_tonight,
-      temp_high: temp_high,
-      temp_low: temp_low
-    )
+    ForecastSummary.new(self)
   end
 
   def current_forecast
-    ForecastCurrent.new(
-      time: time,
-      date: date,
-      summary: summary_current,
-      icon: icon,
-      temperature: temp_current,
-      feels_like: feels_like,
-      humidity: humidity,
-      visibility: visibility,
-      uv_index: uv_index
-    )
+    ForecastCurrent.new(self)
   end
 
   def hourly_forecast
@@ -51,13 +36,14 @@ class ForecastDecorator < SimpleDelegator
     end
   end
 
-  private
 
   def summary_tonight
     time = get_midnight_timestamp
     midnight_forecast = hourly[:data].find { |t| t[:time] == time }
     midnight_forecast[:summary]
   end
+
+  private
 
   def time
     time_obj.strftime("%l:%M %p").strip
