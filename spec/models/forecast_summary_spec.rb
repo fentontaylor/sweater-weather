@@ -1,7 +1,7 @@
 require 'mock_helper'
 
 describe ForecastSummary do
-  it 'can initialize with keyword arguments' do
+  it 'can initialize with a forecast decorator object' do
     stub_denver_forecast
 
     service = ForecastService.new('39.7392358,-104.990251')

@@ -51,6 +51,8 @@ class ForecastDecorator < SimpleDelegator
     end
   end
 
+  private
+
   def time_obj
     @time_obj ||= Time.at current_time
   end

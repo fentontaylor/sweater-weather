@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe ForecastHourly do
-  it 'can initialize with keyword arguments' do
+  it 'can initialize with decorator object and hour hash' do
     stub_denver_forecast
 
     service = ForecastService.new('39.7392358,-104.990251')
