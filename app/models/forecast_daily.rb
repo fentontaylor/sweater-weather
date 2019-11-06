@@ -1,10 +1,10 @@
 class ForecastDaily
-  def initialize(args)
-    @day = args[:day]
-    @icon = args[:icon]
-    @precip_probability = args[:precip_probability]
-    @precip_type = args[:precip_type]
-    @temp_high = args[:temp_high]
-    @temp_low = args[:temp_low]
+  def initialize(obj, day)
+    @day = obj.time_abbr(day[:time], :day)
+    @icon = day[:icon]
+    @precip_probability = obj.convert_pct(day[:precipProbability])
+    @precip_type = day[:precipType]
+    @temp_high = day[:temperatureHigh]
+    @temp_low = day[:temperatureLow]
   end
 end

@@ -4,54 +4,26 @@ class ForecastDecorator < SimpleDelegator
   end
 
   def summary
-    ForecastSummary.new(
-      today: summary_today,
-      tonight: summary_tonight,
-      temp_high: temp_high,
-      temp_low: temp_low
-    )
+    ForecastSummary.new(self)
   end
 
   def current_forecast
-    ForecastCurrent.new(
-      time: time,
-      date: date,
-      summary: summary_current,
-      icon: icon,
-      temperature: temp_current,
-      feels_like: feels_like,
-      humidity: humidity,
-      visibility: visibility,
-      uv_index: uv_index
-    )
+    ForecastCurrent.new(self)
   end
 
   def hourly_forecast
     next_8_hours = hourly[:data].first(8)
     next_8_hours.map do |hour|
-      ForecastHourly.new(
-        time: time_abbr(hour[:time], :hour),
-        icon: hour[:icon],
-        temperature: hour[:temperature]
-      )
+      ForecastHourly.new(self, hour)
     end
   end
 
   def daily_forecast
     next_5_days = daily[:data].first(5)
     next_5_days.map do |day|
-      ForecastDaily.new(
-        day: time_abbr(day[:time], :day),
-        icon: day[:icon],
-        precip_probability: convert_pct(day[:precipProbability]),
-        precip_type: day[:precipType],
-        temp_high: day[:temperatureHigh],
-        temp_low: day[:temperatureLow]
-      )
+      ForecastDaily.new(self, day)
     end
   end
-
-  private
 
   def summary_tonight
     time = get_midnight_timestamp
@@ -78,6 +50,8 @@ class ForecastDecorator < SimpleDelegator
     when :day then t.strftime("%A")
     end
   end
+
+  private
 
   def time_obj
     @time_obj ||= Time.at current_time
