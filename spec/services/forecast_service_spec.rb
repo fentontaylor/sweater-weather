@@ -18,4 +18,16 @@ describe ForecastService do
     expect(data).to have_key(:hourly)
     expect(data).to have_key(:offset)
   end
+
+  it 'can initialize with added travel time to change the request_path' do
+    time = Time.at(1573000000)
+    allow(Time).to receive(:now).and_return(time)
+
+    travel_time = 5678
+    future_time = Time.now.to_i + travel_time
+
+    service = ForecastService.new('38, -104', travel_time)
+
+    expect(service.request_path).to include(future_time.to_s)
+  end
 end

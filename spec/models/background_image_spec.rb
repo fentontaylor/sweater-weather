@@ -18,7 +18,7 @@ describe BackgroundImage do
 
   describe 'instance methods' do
     it '#random_url' do
-      expect(@bg_img.random_url).to include('https://images.unsplash.com/photo')
+      expect(@bg_img.random_url).to include('https://images.unsplash.com/')
     end
   end
 end

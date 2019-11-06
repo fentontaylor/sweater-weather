@@ -35,8 +35,9 @@ def stub_denver_to_pueblo_directions
 end
 
 def stub_pueblo_future_forecast
-  service = ForecastService.new('39.7392358,-104.990251', 1573009319)
-  json = File.open('./spec/fixtures/forecast_future_pueblo.json')
-  stub_request(:get, service.request_path)
-    .to_return(status: 200, body: json)
+  json = File.read('./spec/fixtures/forecast_future_pueblo.json')
+  data = JSON.parse(json, symbolize_names: true)
+  allow_any_instance_of(ForecastService)
+    .to receive(:get_forecast)
+    .and_return(data)
 end

@@ -1,12 +1,11 @@
 require 'mock_helper'
 
 describe 'POST /api/v1/road_trip', type: :request do
-  WebMock.allow_net_connect!
+
   before :each do
     stub_denver_to_pueblo_directions
     stub_pueblo_future_forecast
 
-    # Timecop.freeze(Time.at 1573009319)
     @user = User.create(email: 'bob@ross.com', password: 'tree', password_confirmation: 'tree' )
 
     @body = {
@@ -22,8 +21,6 @@ describe 'POST /api/v1/road_trip', type: :request do
   end
 
   it 'returns a forecast for estimated arrival time in destination city' do
-    # frozen_time = Time.at 1573009319
-    # Time.stubs(:now).returns(frozen_time)
     post '/api/v1/road_trip', params: @body, headers: @headers
 
     expect(response.status).to eq(200)
@@ -35,9 +32,9 @@ describe 'POST /api/v1/road_trip', type: :request do
     expect(data[:data][:type]).to eq('road_trip')
 
     attributes = data[:data][:attributes]
-    expect(attributes[:temperature]).to eq(40)
-    expect(attributes[:summary]).to eq('Clearly')
-    expect(attributes[:approx_travel_time]).to eq('5555')
+    expect(attributes[:temperature]).to eq(41.31)
+    expect(attributes[:summary]).to eq('Clear')
+    expect(attributes[:approx_travel_time]).to eq('1 hour 48 mins')
   end
 
   it 'returns status 401 with error message if key invalid' do
