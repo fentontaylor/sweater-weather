@@ -11,6 +11,7 @@ class RoadTripService
   end
 
   def request_path
-    "https://maps.googleapis.com/maps/api/directions/json?destination=#{@destination}&key=#{ENV['google_api_key']}&origin=#{@origin}"
+    "https://maps.googleapis.com/maps/api/directions/json" \
+      "?origin=#{@origin}&destination=#{@destination}&key=#{ENV['google_api_key']}"
   end
 end
