@@ -4,12 +4,6 @@ class GeolocationDecorator < SimpleDelegator
   end
 
   def location_info
-    LocationInfo.new(
-      city: city,
-      state: state,
-      country: country,
-      latitude: latitude,
-      longitude: longitude
-    )
+    LocationInfo.new(self)
   end
 end

@@ -1,9 +1,16 @@
 class LocationInfo
-  def initialize(args)
-    @city = args[:city]
-    @state = args[:state]
-    @country = args[:country]
-    @latitude = args[:latitude]
-    @longitude = args[:longitude]
+  def initialize(obj)
+    @city = obj.city
+    @state = obj.state
+    @country = obj.country
+    @latitude = obj.latitude
+    @longitude = obj.longitude
   end
 end
+  # 
+  #
+  # city: city,
+  # state: state,
+  # country: country,
+  # latitude: latitude,
+  # longitude: longitude
