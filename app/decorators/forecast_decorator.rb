@@ -21,14 +21,7 @@ class ForecastDecorator < SimpleDelegator
   def daily_forecast
     next_5_days = daily[:data].first(5)
     next_5_days.map do |day|
-      ForecastDaily.new(
-        day: time_abbr(day[:time], :day),
-        icon: day[:icon],
-        precip_probability: convert_pct(day[:precipProbability]),
-        precip_type: day[:precipType],
-        temp_high: day[:temperatureHigh],
-        temp_low: day[:temperatureLow]
-      )
+      ForecastDaily.new(self, day)
     end
   end
 
