@@ -28,14 +28,15 @@ def stub_denver_images
 end
 
 def stub_denver_to_pueblo_directions
-  # service = RoadTripService.new(origin: 'Denver,CO', destination: 'Pueblo,CO')
+  service = RoadTripService.new('Denver,CO', 'Pueblo,CO')
   json = File.open('./spec/fixtures/directions_denver_to_pueblo.json')
-  stub_request(:get, "https://maps.googleapis.com/maps/api/directions/json?destination=Pueblo,CO&key=AIzaSyBR8oWx020BC6IlgcQsu51KvW5sy_lszLk&origin=Denver,CO")
-    .with(
-      headers: {
-        'Accept'=>'*/*',
-        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-        'User-Agent'=>'Faraday v0.17.0'
-      })
+  stub_request(:get, service.request_path)
+    .to_return(status: 200, body: json)
+end
+
+def stub_pueblo_future_forecast
+  service = ForecastService.new('39.7392358,-104.990251', 1573009319)
+  json = File.open('./spec/fixtures/forecast_future_pueblo.json')
+  stub_request(:get, service.request_path)
     .to_return(status: 200, body: json)
 end
